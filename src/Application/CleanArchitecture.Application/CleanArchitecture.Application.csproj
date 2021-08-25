@@ -5,11 +5,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Models\" />
     <None Remove="Interfaces\" />
+    <None Remove="Services\" />
+    <None Remove="ViewModels\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
     <Folder Include="Interfaces\" />
+    <Folder Include="Services\" />
+    <Folder Include="ViewModels\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Domain\CleanArchitecture.Domain\CleanArchitecture.Domain.csproj" />
   </ItemGroup>
 </Project>
