@@ -9,6 +9,7 @@
   <ItemGroup>
     <None Remove="Extensions\" />
     <None Remove="Microsoft.Extensions.DependencyInjection" />
+    <None Remove="Views\Course\" />
   </ItemGroup>
   <ItemGroup>
     <None Update="app.db" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true" />
@@ -38,6 +39,7 @@
   <ItemGroup>
     <Folder Include="Extensions\" />
     <Folder Include="wwwroot\images\" />
+    <Folder Include="Views\Course\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\images\" />
