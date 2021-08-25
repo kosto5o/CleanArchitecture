@@ -1,0 +1,17 @@
+version: '3.4'
+
+services:
+  universitydb:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+
+  sqlpad:
+    image: sqlpad/sqlpad
+
+  cleanarchitecture.mvc:
+    image: ${DOCKER_REGISTRY-}cleanarchitecture
+    build:
+      context: .
+      dockerfile: CleanArchitecture.UI.Mvc/CleanArchitecture.Mvc/Dockerfile
+
+volumes:
+  sqlpad_data:

@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArchitecture.Mvc", "Cl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArchitecture.Domain", "Domain\CleanArchitecture.Domain\CleanArchitecture.Domain.csproj", "{8E0E58BB-6A8B-42B0-99F7-5035405FD1B2}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{FD5EC53E-C224-42E1-88EA-2DB6AA9C7D9F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArchitecture.Infrastructure.Data", "Infrastructure.Data\CleanArchitecture.Infrastructure.Data\CleanArchitecture.Infrastructure.Data.csproj", "{4CB45FBE-BA1F-46FE-BE09-94C8125DD781}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +35,14 @@ Global
 		{8E0E58BB-6A8B-42B0-99F7-5035405FD1B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E0E58BB-6A8B-42B0-99F7-5035405FD1B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E0E58BB-6A8B-42B0-99F7-5035405FD1B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD5EC53E-C224-42E1-88EA-2DB6AA9C7D9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD5EC53E-C224-42E1-88EA-2DB6AA9C7D9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD5EC53E-C224-42E1-88EA-2DB6AA9C7D9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD5EC53E-C224-42E1-88EA-2DB6AA9C7D9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CB45FBE-BA1F-46FE-BE09-94C8125DD781}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CB45FBE-BA1F-46FE-BE09-94C8125DD781}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CB45FBE-BA1F-46FE-BE09-94C8125DD781}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CB45FBE-BA1F-46FE-BE09-94C8125DD781}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -41,5 +53,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{5331C089-888F-43EE-B646-58F7CA4A0370} = {89F26D6B-5B3C-4090-A98E-53E5106F205D}
 		{8E0E58BB-6A8B-42B0-99F7-5035405FD1B2} = {09398A2A-85D6-4226-87AF-81F0453A318B}
+		{4CB45FBE-BA1F-46FE-BE09-94C8125DD781} = {E0AE99AD-809C-4C26-9B1F-8922D6977454}
 	EndGlobalSection
 EndGlobal

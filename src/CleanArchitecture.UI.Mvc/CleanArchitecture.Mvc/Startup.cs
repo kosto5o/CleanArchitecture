@@ -11,7 +11,10 @@ using Microsoft.EntityFrameworkCore;
 using CleanArchitecture.Mvc.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+
 using Microsoft.Extensions.Hosting;
+using CleanArchitecture.Infrastructure.Data.Context;
+//using CleanArchitecture.Infrastructure.Data.Context;
 
 namespace CleanArchitecture.Mvc
 {
@@ -28,10 +31,15 @@ namespace CleanArchitecture.Mvc
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlite(
-                    Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("UniversityIdentityConnectionString")));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.AddDbContext<UniversityDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("UniversityConnectionString")));
+
+
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
