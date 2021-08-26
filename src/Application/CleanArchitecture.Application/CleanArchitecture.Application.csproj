@@ -8,13 +8,21 @@
     <None Remove="Interfaces\" />
     <None Remove="Services\" />
     <None Remove="ViewModels\" />
+    <None Remove="AutoMapper" />
+    <None Remove="AutoMapper.Extensions.Microsoft.DependencyInjection" />
+    <None Remove="AutoMapper\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Interfaces\" />
     <Folder Include="Services\" />
     <Folder Include="ViewModels\" />
+    <Folder Include="AutoMapper\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Domain\CleanArchitecture.Domain\CleanArchitecture.Domain.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
   </ItemGroup>
 </Project>

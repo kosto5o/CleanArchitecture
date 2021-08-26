@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using CleanArchitecture.Application.Interfaces;
 using CleanArchitecture.Application.ViewModels;
 using CleanArchitecture.Domain.Commands;
@@ -11,26 +14,25 @@ namespace CleanArchitecture.Application.Services
     {
         private readonly ICourseRepository _courseRepository;
         private readonly IMediatorHandler _bus;
+        private readonly IMapper _mapper;
 
-        public CourseService(ICourseRepository courseRepository, IMediatorHandler bus)
+        public CourseService(ICourseRepository courseRepository, IMediatorHandler bus, IMapper mapper)
         {
             _courseRepository = courseRepository ?? throw new ArgumentNullException(nameof(courseRepository));
             _bus = bus ?? throw new ArgumentNullException(nameof(bus));
+            _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
         public void Create(CourseViewModel courseViewModel)
         {
-            CreateCourseCommand createCourseCommand = new CreateCourseCommand(courseViewModel.Name, courseViewModel.Description, courseViewModel.ImageUrl);
+            var createCourseCommand = _mapper.Map<CreateCourseCommand>(courseViewModel);
 
             _bus.SendCommand(createCourseCommand);
         }
 
-        public CourseViewModel GetCourses()
+        public IEnumerable<CourseViewModel> GetCourses()
         {
-            return new CourseViewModel()
-            {
-                Courses = _courseRepository.GetCourses()
-            };
+            return _courseRepository.GetCourses().ProjectTo<CourseViewModel>(_mapper.ConfigurationProvider);
         }
     }
 }

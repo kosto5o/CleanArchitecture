@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CleanArchitecture.Api.Configurations;
 using CleanArchitecture.Infrastructure.Data.Context;
 using CleanArchitecture.Infrasturcutre.IoC;
 using MediatR;
@@ -35,6 +36,7 @@ namespace CleanArchitecture.Api
             services.AddDbContext<UniversityDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("UniversityConnectionString")));
 
+            services.RegisterAutoMapper();
 
             services.AddMediatR(typeof(Startup));
 
