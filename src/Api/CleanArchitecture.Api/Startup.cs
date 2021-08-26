@@ -1,17 +1,23 @@
-﻿using CleanArchitecture.Infrastructure.Data.Context;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using CleanArchitecture.Api.Configurations;
+using CleanArchitecture.Infrastructure.Data.Context;
 using CleanArchitecture.Infrasturcutre.IoC;
-using CleanArchitecture.Mvc.Configurations;
-using CleanArchitecture.Mvc.Data;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 
-namespace CleanArchitecture.Mvc
+namespace CleanArchitecture.Api
 {
     public class Startup
     {
@@ -25,20 +31,20 @@ namespace CleanArchitecture.Mvc
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("UniversityIdentityConnectionString")));
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddControllers();
 
             services.AddDbContext<UniversityDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("UniversityConnectionString")));
 
-            services.AddMediatR(typeof(Startup));
             services.RegisterAutoMapper();
 
-            services.AddControllersWithViews();
-            services.AddRazorPages();
+            services.AddMediatR(typeof(Startup));
+
+            // Swagger configuration
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "CleanArchitecture.Api", Version = "v1" });
+            });
 
             RegisterServices(services);
         }
@@ -49,28 +55,19 @@ namespace CleanArchitecture.Mvc
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseDatabaseErrorPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "CleanArchitecture.Api v1"));
             }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
-            }
+
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
 
             app.UseRouting();
 
-            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
-                endpoints.MapRazorPages();
+                endpoints.MapControllers();
             });
         }
 

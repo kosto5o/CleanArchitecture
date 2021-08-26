@@ -7,9 +7,16 @@
   <ItemGroup>
     <None Remove="Models\" />
     <None Remove="Interfaces\" />
+    <None Remove="Commands\" />
+    <None Remove="CommandHandlers\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="Interfaces\" />
+    <Folder Include="Commands\" />
+    <Folder Include="CommandHandlers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CleanArchitecture.Domain.Core\CleanArchitecture.Domain.Core.csproj" />
   </ItemGroup>
 </Project>
