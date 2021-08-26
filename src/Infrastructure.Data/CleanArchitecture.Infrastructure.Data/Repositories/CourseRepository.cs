@@ -15,6 +15,12 @@ namespace CleanArchitecture.Infrastructure.Data.Repositories
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
+        public void Add(Course course)
+        {
+            _context.Add(course);
+            _context.SaveChanges();
+        }
+
         public IEnumerable<Course> GetCourses()
         {
             return _context.Courses;

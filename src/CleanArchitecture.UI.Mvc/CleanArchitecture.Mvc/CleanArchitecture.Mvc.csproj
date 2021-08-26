@@ -29,9 +29,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Infrastructure.Data\CleanArchitecture.Infrastructure.Data\CleanArchitecture.Infrastructure.Data.csproj">
-      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
-    </ProjectReference>
     <ProjectReference Include="..\..\Infrastructure.IoC\CleanArchitecture.Infrasturcutre.IoC\CleanArchitecture.Infrasturcutre.IoC.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
